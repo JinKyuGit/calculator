@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/container"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/memberTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:text="이월 계산기"
+        android:textSize="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/bossTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="보스 체력(만 단위)"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/memberTitle"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bossHp" />
+
+    <EditText
+        android:id="@+id/bossHp"
+        android:layout_width="225dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:inputType="number"
+        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bossTitle" />
+
+    <TextView
+        android:id="@+id/damageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="데미지(만 단위)"
+        android:textSize="20dp"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bossHp" />
+
+
+    <Button
+        android:id="@+id/addBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
+        android:text="칸 추가"
+        app:layout_constraintLeft_toRightOf="@+id/damageTitle"
+        app:layout_constraintTop_toBottomOf="@+id/bossHp" />
+
+    <Button
+        android:id="@+id/delBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
+        android:text="칸 제거"
+        app:layout_constraintLeft_toRightOf="@+id/addBtn"
+        app:layout_constraintTop_toBottomOf="@+id/bossHp" />
+
+
+    <!-- 하단 버튼 -->
+
+    <Button
+        android:id="@+id/calculateBtn"
+        android:layout_width="168dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="4dp"
+        android:text="계산"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/resetBtn"
+         />
+
+    <Button
+        android:id="@+id/resetBtn"
+        android:layout_width="168dp"
+        android:layout_height="48dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="4dp"
+        android:text="초기화"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/calculateBtn"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

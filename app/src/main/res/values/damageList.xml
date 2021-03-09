@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="damage1" type="id" />
+    <item name="damage2" type="id" />
+    <item name="damage3" type="id" />
+    <item name="damage4" type="id" />
+    <item name="damage5" type="id" />
+    <item name="resultMsg" type="id"/>
+
+    <array name="damage_array">
+        <item>@id/damage1</item>
+        <item>@id/damage2</item>
+        <item>@id/damage3</item>
+        <item>@id/damage4</item>
+        <item>@id/damage5</item>
+    </array>
+
+
+
+</resources>
