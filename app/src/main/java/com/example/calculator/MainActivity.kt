@@ -124,6 +124,9 @@ class MainActivity : AppCompatActivity() {
 
     //칸 추가 버튼 클릭
     fun add(){
+        //기존 결과 메시지 삭제 - 칸 겹침.
+        var delView = findViewById<TextView>(R.id.resultMsg)
+        container!!.removeView(delView)
 
         //최대값은 5.
         if(damageLength == 5){
