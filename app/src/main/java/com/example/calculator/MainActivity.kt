@@ -4,14 +4,20 @@ import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import android.text.InputType
+import android.view.View
+import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.content.ContextCompat
+import androidx.core.view.marginLeft
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,10 +35,15 @@ class MainActivity : AppCompatActivity() {
         container = findViewById(R.id.container);
         applyConstraintSet.clone(container);
 
+        //화면클릭시 키보드 숨기기.
+        this.setupUI(findViewById(R.id.container))
+
         val addBtn = findViewById<Button>(R.id.addBtn); //칸 추가
         val delBtn = findViewById<Button>(R.id.delBtn); //칸 제거
         val calculBtn =  findViewById<Button>(R.id.calculateBtn); //계산
         val resetBtn = findViewById<Button>(R.id.resetBtn); //초기화
+
+
 
 
         /* 화면 기초 기능 설정 */
@@ -58,33 +69,62 @@ class MainActivity : AppCompatActivity() {
 
         //화면 초기화 함수 호출.
        this.init()
+    }
 
+    fun hideSoftKeyboard() {
+        currentFocus?.let {
+            val inputMethodManager = ContextCompat.getSystemService(this, InputMethodManager::class.java)!!
+            inputMethodManager.hideSoftInputFromWindow(it.windowToken, 0)
+        }
+    }
+
+    fun setupUI(view: View) {
+
+        // Set up touch listener for non-text box views to hide keyboard.
+        if (view !is EditText) {
+            view.setOnTouchListener { v, event ->
+                hideSoftKeyboard()
+                false
+            }
+        }
+
+        //If a layout container, iterate over children and seed recursion.
+        if (view is ViewGroup) {
+            for (i in 0 until view.childCount) {
+                val innerView = view.getChildAt(i)
+                setupUI(innerView)
+            }
+        }
     }
     
     //초기화 - 데미지 배열을 2개로 고정해놓는다.
     fun init(){
 
+        var innerView : LinearLayout = findViewById(R.id.innerView);
         var EditText = arrayOfNulls<EditText>(2)
 
+        val layoutParams = LinearLayout.LayoutParams(225.topx(), 60.topx())
+        layoutParams.setMargins(50, 0, 0, 0)
         //첫번째
         EditText[0] = EditText(this)
         EditText[0]!!.inputType = InputType.TYPE_CLASS_NUMBER
         EditText[0]!!.id = damageArray[0]
-        EditText[0]!!.width = 225.topx()
-        EditText[0]!!.height = 60.topx()
-
+       // EditText[0]!!.width = 225.topx()
+      //  EditText[0]!!.height = 60.topx()
+        EditText[0]!!.layoutParams = layoutParams
         //두번째
         EditText[1] = EditText(this)
         EditText[1]!!.inputType = InputType.TYPE_CLASS_NUMBER
         EditText[1]!!.id = damageArray[1]
-        EditText[1]!!.width = 225.topx()
-        EditText[1]!!.height = 60.topx()
-
+      //  EditText[1]!!.width = 225.topx()
+     //   EditText[1]!!.height = 60.topx()
+        EditText[1]!!.layoutParams = layoutParams
         //화면에 적용.
-        container!!.addView(EditText[0])
-        container!!.addView(EditText[1])
+        innerView!!.addView(EditText[0])
+        innerView!!.addView(EditText[1])
       //  setContentView(container)
 
+        /**
         //constraint 적용
         //첫번째 데미지 칸
         applyConstraintSet.constrainHeight(damageArray[0],
@@ -97,7 +137,7 @@ class MainActivity : AppCompatActivity() {
         applyConstraintSet.connect(damageArray[0], ConstraintSet.RIGHT,
             ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0)
         applyConstraintSet.connect(damageArray[0], ConstraintSet.TOP,
-            R.id.damageTitle, ConstraintSet.BOTTOM, 26.topx()) 
+            R.id.damageTitle, ConstraintSet.BOTTOM, 26.topx())
 
         //두번째 데미지 칸.
         applyConstraintSet.constrainHeight(damageArray[1],
@@ -115,6 +155,7 @@ class MainActivity : AppCompatActivity() {
         //ConstraintSet을 통해 view에 적용.
         applyConstraintSet.applyTo(container)
 
+        */
 
 
 
@@ -124,17 +165,19 @@ class MainActivity : AppCompatActivity() {
 
     //칸 추가 버튼 클릭
     fun add(){
-        //기존 결과 메시지 삭제 - 칸 겹침.
-        var delView = findViewById<TextView>(R.id.resultMsg)
-        container!!.removeView(delView)
 
+        var innerView : LinearLayout = findViewById(R.id.innerView);
+        var delView = findViewById<TextView>(R.id.resultMsg)
+        val layoutParams = LinearLayout.LayoutParams(225.topx(), 60.topx())
+        layoutParams.setMargins(50, 0, 0, 0)
+        //기존 결과 메시지 삭제 - 칸 겹침.
+        innerView!!.removeView(delView)
         //최대값은 5.
         if(damageLength == 5){
             return
         }
 
         val newId = damageArray[damageLength]
-
         val prevId = damageArray[damageLength-1]
 
         if(prevId == -1){
@@ -145,12 +188,14 @@ class MainActivity : AppCompatActivity() {
         var editText = EditText(this)
         editText!!.inputType = InputType.TYPE_CLASS_NUMBER
         editText!!.id = newId
-        editText!!.width = 225.topx()
-        editText!!.height = 60.topx()
-
+       // editText!!.width = 225.topx()
+       // editText!!.height = 60.topx()
+        editText!!.layoutParams = layoutParams
         //화면에 적용.
-        container!!.addView(editText)
+        innerView!!.addView(editText)
+        damageLength++;
 
+    /**
         //constraint 적용
         applyConstraintSet.constrainHeight(newId,
             ConstraintSet.WRAP_CONTENT)
@@ -166,20 +211,25 @@ class MainActivity : AppCompatActivity() {
 
         //ConstraintSet을 통해 view에 적용.
         applyConstraintSet.applyTo(container)
+**/
 
-        damageLength++;
 
     }
 
     //칸 제거 버튼 클릭
     fun delete(){
 
+        var innerView : LinearLayout = findViewById(R.id.innerView);
+        //기존 결과 메시지 삭제 - 칸 겹침.
+        var delMsg = findViewById<TextView>(R.id.resultMsg)
+        innerView!!.removeView(delMsg)
+
         if(damageLength == 1){
             return
         }
 
         var delView = findViewById<EditText>(damageArray[damageLength-1])
-        container!!.removeView(delView)
+        innerView!!.removeView(delView)
 
         damageLength--
     }
@@ -220,11 +270,10 @@ class MainActivity : AppCompatActivity() {
 
     fun showResultMsg(messageList : ArrayList<String>){
         //기존 삭제
+
+        var innerView : LinearLayout = findViewById(R.id.innerView);
         var delView = findViewById<TextView>(R.id.resultMsg)
-        container!!.removeView(delView)
-
-
-
+        innerView!!.removeView(delView)
 
         var textView = TextView(this)
 
@@ -239,8 +288,9 @@ class MainActivity : AppCompatActivity() {
         textView.setText(message)
         textView.id = R.id.resultMsg
         textView.textSize = 16f
-        container!!.addView(textView)
+        innerView!!.addView(textView)
 
+        /*
         //constraint 적용
         applyConstraintSet.constrainHeight(R.id.resultMsg,
             ConstraintSet.WRAP_CONTENT)
@@ -256,7 +306,7 @@ class MainActivity : AppCompatActivity() {
 
         //ConstraintSet을 통해 view에 적용.
         applyConstraintSet.applyTo(container)
-
+*/
     }
 
     fun reset(){
