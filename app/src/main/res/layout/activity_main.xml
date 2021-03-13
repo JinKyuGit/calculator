@@ -7,17 +7,20 @@
     android:id="@+id/container"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/memberTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
-        android:text="이월 계산기"
-        android:textSize="40dp"
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="397dp"
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="@string/banner_ad_unit_id"
+        app:layout_constraintBottom_toTopOf="@+id/bossTitle"
+        app:layout_constraintHorizontal_bias="0.714"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"></com.google.android.gms.ads.AdView>
 
     <TextView
         android:id="@+id/bossTitle"
@@ -26,7 +29,7 @@
         android:layout_marginTop="20dp"
         android:text="보스 체력(만 단위)"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/memberTitle"
+        app:layout_constraintBottom_toBottomOf="@+id/adView"
         app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -1,6 +1,12 @@
 <resources>
-    <string name="app_name">calculator</string>
+    <string name="app_name">이월계산기</string>
 
     <string name="ok_button">초기화</string>
     <string name="cancel_button"><b><i>취소</i></b></string>
+
+    <!-- 광고 관련 -->
+    <string name="admob_app_id">ca-app-pub-2671904183359974~8962254599</string>
+    <string name="admob_app_id_for_test">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="banner_ad_unit_id">ca-app-pub-2671904183359974/4010144960</string>
+    <string name="banner_ad_unit_id_for_test">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

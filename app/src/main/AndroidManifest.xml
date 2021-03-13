@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.calculator">
+    package="com.app.calculator">
 
     <application
         android:allowBackup="true"
@@ -19,6 +19,11 @@
             </intent-filter>
 
         </activity>
+
+        <!-- 광고 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2671904183359974~8962254599"/>
     </application>
 
 </manifest>
