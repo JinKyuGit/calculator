@@ -1,146 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/container"
-    tools:context=".MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical"
+    android:gravity="center">
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
-        android:layout_width="397dp"
-        android:layout_height="49dp"
+        android:layout_width="380dp"
+        android:layout_height="86dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         app:adSize="BANNER"
-        app:adUnitId="@string/banner_ad_unit_id"
-        app:layout_constraintBottom_toTopOf="@+id/bossTitle"
-        app:layout_constraintHorizontal_bias="0.714"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"></com.google.android.gms.ads.AdView>
+        app:adUnitId="@string/banner_ad_unit_id"></com.google.android.gms.ads.AdView>
 
-    <TextView
-        android:id="@+id/bossTitle"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="381dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="보스 체력(만 단위)"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/adView"
-        app:layout_constraintHorizontal_bias="0.081"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bossHp" />
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
-    <Button
-        android:id="@+id/helpBtn"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/bossTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="보스 체력(만 단위)"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/helpBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="76dp"
+            android:layout_marginTop="12dp"
+            android:text="도움말" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="376dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="76dp"
-        android:layout_marginTop="12dp"
-        android:text="도움말"
-        app:layout_constraintBottom_toBottomOf="@+id/adView"
-        app:layout_constraintLeft_toRightOf="@+id/bossTitle"
-        app:layout_constraintTop_toTopOf="@+id/bossHp"
-        app:layout_constraintVertical_bias="0.478" />
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
-    <EditText
-        android:id="@+id/bossHp"
-        android:layout_width="225dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:inputType="number"
-        android:maxLength="4"
-        app:layout_constraintHorizontal_bias="0.104"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bossTitle" />
 
-    <TextView
-        android:id="@+id/damageTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="데미지(만 단위)"
-        android:textSize="20dp"
-        app:layout_constraintHorizontal_bias="0.057"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bossHp" />
+        <EditText
+            android:id="@+id/bossHp"
+            android:layout_width="228dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:inputType="number"
+            android:maxLength="4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bossTitle" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/addBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
-        android:text="칸 추가"
-        app:layout_constraintLeft_toRightOf="@+id/damageTitle"
-        app:layout_constraintTop_toBottomOf="@+id/bossHp" />
+    <LinearLayout
+        android:layout_width="381dp"
+        android:layout_height="72dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
-    <Button
-        android:id="@+id/delBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
-        android:text="칸 제거"
-        app:layout_constraintLeft_toRightOf="@+id/addBtn"
-        app:layout_constraintTop_toBottomOf="@+id/bossHp" />
+        <TextView
+            android:id="@+id/damageTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="데미지(만 단위)"
+            android:textSize="20dp"
+            app:layout_constraintHorizontal_bias="0.057"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bossHp" />
 
-    <!-- 하단 버튼 -->
+        <Button
+            android:id="@+id/addBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:text="칸 추가" />
 
-        <!-- 스크롤 -->
+        <Button
+            android:id="@+id/delBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:text="칸 제거" />
+
+    </LinearLayout>
+
+
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="404dp"
-        android:layout_height="385dp"
-        app:layout_constraintBottom_toTopOf="@+id/calculateBtn"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/damageTitle">
+        android:layout_width="318dp"
+        android:layout_height="227dp">
 
         <LinearLayout
             android:id="@+id/innerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/calculateBtn"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scrollView" />
+            android:orientation="vertical">
 
+        </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/calculateBtn"
-        android:layout_width="168dp"
-        android:layout_height="48dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="4dp"
-        android:text="계산"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/resetBtn"
-         />
-
-    <Button
-        android:id="@+id/resetBtn"
-        android:layout_width="168dp"
-        android:layout_height="48dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="4dp"
-        android:text="초기화"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/calculateBtn"/>
+    <LinearLayout
+        android:layout_width="376dp"
+        android:layout_height="74dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
 
+        <Button
+            android:id="@+id/calculateBtn"
+            android:layout_width="168dp"
+            android:layout_height="58dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="4dp"
+            android:gravity="center"
+            android:text="계산"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/resetBtn"
+            android:layout_width="175dp"
+            android:layout_height="61dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="4dp"
+            android:gravity="center"
+            android:text="초기화"
+            android:textSize="20dp"/>
+
+    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

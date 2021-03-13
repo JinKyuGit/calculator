@@ -26,7 +26,7 @@ import com.google.android.gms.ads.MobileAds
 
 class MainActivity : AppCompatActivity() {
 
-    public var container: ConstraintLayout? = null
+    public var container: LinearLayout? = null
     public var applyConstraintSet = ConstraintSet()
     public val damageArray = arrayOf(
         R.id.damage1,
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         //변수 생성 및 초기화.
         container = findViewById(R.id.container);
-        applyConstraintSet.clone(container);
+        //applyConstraintSet.clone(container);
 
         //화면클릭시 키보드 숨기기.
         this.setupUI(findViewById(R.id.container))
@@ -145,7 +145,7 @@ class MainActivity : AppCompatActivity() {
         var EditText = arrayOfNulls<EditText>(2)
         //레이아웃
         val layoutParams = LinearLayout.LayoutParams(225.topx(), 60.topx())
-        layoutParams.setMargins(50, 0, 0, 0)
+        layoutParams.setMargins(20, 0, 0, 0)
 
         //필터
         val maxLength = 4
@@ -173,41 +173,6 @@ class MainActivity : AppCompatActivity() {
         innerView!!.addView(EditText[1])
       //  setContentView(container)
 
-        /**
-        //constraint 적용
-        //첫번째 데미지 칸
-        applyConstraintSet.constrainHeight(damageArray[0],
-            ConstraintSet.WRAP_CONTENT)
-        applyConstraintSet.constrainWidth(damageArray[0],
-            ConstraintSet.WRAP_CONTENT)
-        applyConstraintSet.setHorizontalBias(damageArray[0], 0.104f)
-        applyConstraintSet.connect(damageArray[0], ConstraintSet.LEFT,
-            ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0)
-        applyConstraintSet.connect(damageArray[0], ConstraintSet.RIGHT,
-            ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0)
-        applyConstraintSet.connect(damageArray[0], ConstraintSet.TOP,
-            R.id.damageTitle, ConstraintSet.BOTTOM, 26.topx())
-
-        //두번째 데미지 칸.
-        applyConstraintSet.constrainHeight(damageArray[1],
-            ConstraintSet.WRAP_CONTENT)
-        applyConstraintSet.constrainWidth(damageArray[1],
-            ConstraintSet.WRAP_CONTENT)
-        applyConstraintSet.setHorizontalBias(damageArray[1], 0.104f)
-        applyConstraintSet.connect(damageArray[1], ConstraintSet.LEFT,
-            ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0)
-        applyConstraintSet.connect(damageArray[1], ConstraintSet.RIGHT,
-            ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0)
-        applyConstraintSet.connect(damageArray[1], ConstraintSet.TOP,
-            damageArray[0], ConstraintSet.BOTTOM, 26.topx())
-
-        //ConstraintSet을 통해 view에 적용.
-        applyConstraintSet.applyTo(container)
-
-        */
-
-
-
     }
     //dp를 픽셀로 리턴.
     fun Int.topx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
@@ -220,7 +185,7 @@ class MainActivity : AppCompatActivity() {
 
         //레이아웃
         val layoutParams = LinearLayout.LayoutParams(225.topx(), 60.topx())
-        layoutParams.setMargins(50, 0, 0, 0)
+        layoutParams.setMargins(20, 0, 0, 0)
 
         //필터
         val maxLength = 4
@@ -253,23 +218,6 @@ class MainActivity : AppCompatActivity() {
         innerView!!.addView(editText)
         damageLength++;
 
-    /**
-        //constraint 적용
-        applyConstraintSet.constrainHeight(newId,
-            ConstraintSet.WRAP_CONTENT)
-        applyConstraintSet.constrainWidth(newId,
-            ConstraintSet.WRAP_CONTENT)
-        applyConstraintSet.setHorizontalBias(newId, 0.104f)
-        applyConstraintSet.connect(newId, ConstraintSet.LEFT,
-            ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0)
-        applyConstraintSet.connect(newId, ConstraintSet.RIGHT,
-            ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0)
-        applyConstraintSet.connect(newId, ConstraintSet.TOP,
-            prevId, ConstraintSet.BOTTOM, 26.topx())
-
-        //ConstraintSet을 통해 view에 적용.
-        applyConstraintSet.applyTo(container)
-**/
 
 
     }
@@ -348,23 +296,6 @@ class MainActivity : AppCompatActivity() {
         textView.textSize = 16f
         innerView!!.addView(textView)
 
-        /*
-        //constraint 적용
-        applyConstraintSet.constrainHeight(R.id.resultMsg,
-            ConstraintSet.WRAP_CONTENT)
-        applyConstraintSet.constrainWidth(R.id.resultMsg,
-            ConstraintSet.WRAP_CONTENT)
-        applyConstraintSet.setHorizontalBias(R.id.resultMsg, 0.104f)
-        applyConstraintSet.connect(R.id.resultMsg, ConstraintSet.LEFT,
-            ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0)
-        applyConstraintSet.connect(R.id.resultMsg, ConstraintSet.RIGHT,
-            ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0)
-        applyConstraintSet.connect(R.id.resultMsg, ConstraintSet.TOP,
-            this.getDamageIdByIndex(damageLength-1), ConstraintSet.BOTTOM, 26.topx())
-
-        //ConstraintSet을 통해 view에 적용.
-        applyConstraintSet.applyTo(container)
-*/
     }
 
     fun reset(){

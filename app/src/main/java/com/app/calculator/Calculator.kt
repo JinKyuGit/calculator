@@ -110,7 +110,7 @@ class Calculator {
         //마지막 쉼표 제거.
         if(!"".equals(attackers)){
             attackers = attackers.substring(0, attackers.length - 2)
-            message = " -공격자 ["+attackers+"], 막타 : "+lastDamage+" 인 경우 이월 시간 : "+time+"초"
+            message = " -공격자 ["+attackers+"]"+"\n"+"막타 : "+lastDamage+" 인 경우 이월 시간 : "+time+"초"
         }else {
             message = " -공격자 "+lastDamage+", 이월 시간 : "+time+"초"
         }
