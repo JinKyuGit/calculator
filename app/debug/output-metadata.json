@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.app.calculator",
+  "applicationId": "com.app.priconeCalculator",
   "variantName": "processDebugResources",
   "elements": [
     {

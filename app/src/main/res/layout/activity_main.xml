@@ -35,6 +35,18 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bossHp" />
 
+    <Button
+        android:id="@+id/helpBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="12dp"
+        android:text="도움말"
+        app:layout_constraintBottom_toBottomOf="@+id/adView"
+        app:layout_constraintLeft_toRightOf="@+id/bossTitle"
+        app:layout_constraintTop_toTopOf="@+id/bossHp"
+        app:layout_constraintVertical_bias="0.478" />
+
     <EditText
         android:id="@+id/bossHp"
         android:layout_width="225dp"
@@ -79,27 +91,29 @@
         app:layout_constraintLeft_toRightOf="@+id/addBtn"
         app:layout_constraintTop_toBottomOf="@+id/bossHp" />
 
-    <!-- 스크롤 -->
+    <!-- 하단 버튼 -->
+
+        <!-- 스크롤 -->
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="407dp"
-        android:layout_height="383dp"
-        app:layout_constraintTop_toBottomOf="@+id/damageTitle"
+        android:layout_width="404dp"
+        android:layout_height="385dp"
         app:layout_constraintBottom_toTopOf="@+id/calculateBtn"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/damageTitle">
 
         <LinearLayout
             android:id="@+id/innerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/scrollView"
             app:layout_constraintBottom_toTopOf="@+id/calculateBtn"
-            />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView" />
 
     </ScrollView>
-
-    <!-- 하단 버튼 -->
 
     <Button
         android:id="@+id/calculateBtn"
