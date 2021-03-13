@@ -38,6 +38,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
         android:inputType="number"
+        android:maxLength="4"
         app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

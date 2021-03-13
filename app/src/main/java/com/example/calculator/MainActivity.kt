@@ -3,6 +3,8 @@ package com.example.calculator
 import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
+import android.text.InputFilter
+import android.text.InputFilter.LengthFilter
 import android.text.InputType
 import android.view.View
 import android.view.ViewGroup
@@ -17,14 +19,19 @@ import androidx.appcompat.view.ContextThemeWrapper
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
-import androidx.core.view.marginLeft
 
 
 class MainActivity : AppCompatActivity() {
 
     public var container: ConstraintLayout? = null
     public var applyConstraintSet = ConstraintSet()
-    public val damageArray = arrayOf(R.id.damage1, R.id.damage2, R.id.damage3, R.id.damage4, R.id.damage5)
+    public val damageArray = arrayOf(
+        R.id.damage1,
+        R.id.damage2,
+        R.id.damage3,
+        R.id.damage4,
+        R.id.damage5
+    )
     public var damageLength = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,7 +80,10 @@ class MainActivity : AppCompatActivity() {
 
     fun hideSoftKeyboard() {
         currentFocus?.let {
-            val inputMethodManager = ContextCompat.getSystemService(this, InputMethodManager::class.java)!!
+            val inputMethodManager = ContextCompat.getSystemService(
+                this,
+                InputMethodManager::class.java
+            )!!
             inputMethodManager.hideSoftInputFromWindow(it.windowToken, 0)
         }
     }
@@ -102,9 +112,15 @@ class MainActivity : AppCompatActivity() {
 
         var innerView : LinearLayout = findViewById(R.id.innerView);
         var EditText = arrayOfNulls<EditText>(2)
-
+        //레이아웃
         val layoutParams = LinearLayout.LayoutParams(225.topx(), 60.topx())
         layoutParams.setMargins(50, 0, 0, 0)
+
+        //필터
+        val maxLength = 4
+        val fArray = arrayOfNulls<InputFilter>(1)
+        fArray[0] = LengthFilter(maxLength)
+
         //첫번째
         EditText[0] = EditText(this)
         EditText[0]!!.inputType = InputType.TYPE_CLASS_NUMBER
@@ -112,6 +128,7 @@ class MainActivity : AppCompatActivity() {
        // EditText[0]!!.width = 225.topx()
       //  EditText[0]!!.height = 60.topx()
         EditText[0]!!.layoutParams = layoutParams
+        EditText[0]!!.filters = fArray
         //두번째
         EditText[1] = EditText(this)
         EditText[1]!!.inputType = InputType.TYPE_CLASS_NUMBER
@@ -119,6 +136,7 @@ class MainActivity : AppCompatActivity() {
       //  EditText[1]!!.width = 225.topx()
      //   EditText[1]!!.height = 60.topx()
         EditText[1]!!.layoutParams = layoutParams
+        EditText[1]!!.filters = fArray
         //화면에 적용.
         innerView!!.addView(EditText[0])
         innerView!!.addView(EditText[1])
@@ -168,8 +186,16 @@ class MainActivity : AppCompatActivity() {
 
         var innerView : LinearLayout = findViewById(R.id.innerView);
         var delView = findViewById<TextView>(R.id.resultMsg)
+
+        //레이아웃
         val layoutParams = LinearLayout.LayoutParams(225.topx(), 60.topx())
         layoutParams.setMargins(50, 0, 0, 0)
+
+        //필터
+        val maxLength = 4
+        val fArray = arrayOfNulls<InputFilter>(1)
+        fArray[0] = LengthFilter(maxLength)
+
         //기존 결과 메시지 삭제 - 칸 겹침.
         innerView!!.removeView(delView)
         //최대값은 5.
@@ -178,7 +204,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val newId = damageArray[damageLength]
-        val prevId = damageArray[damageLength-1]
+        val prevId = damageArray[damageLength - 1]
 
         if(prevId == -1){
             return
@@ -191,6 +217,7 @@ class MainActivity : AppCompatActivity() {
        // editText!!.width = 225.topx()
        // editText!!.height = 60.topx()
         editText!!.layoutParams = layoutParams
+        editText!!.filters = fArray
         //화면에 적용.
         innerView!!.addView(editText)
         damageLength++;
@@ -228,7 +255,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        var delView = findViewById<EditText>(damageArray[damageLength-1])
+        var delView = findViewById<EditText>(damageArray[damageLength - 1])
         innerView!!.removeView(delView)
 
         damageLength--
@@ -251,7 +278,7 @@ class MainActivity : AppCompatActivity() {
 
             val damageStr = findViewById<EditText>(id).text.toString()
             if(null == damageStr || "".equals(damageStr)){
-                util.alert(this, "알림", ""+(i+1)+"번째 칸에 데미지를 입력해주세요.")
+                util.alert(this, "알림", "" + (i + 1) + "번째 칸에 데미지를 입력해주세요.")
                 return
             }
             damageList[i] = damageStr.toInt()
@@ -263,12 +290,12 @@ class MainActivity : AppCompatActivity() {
         this.showResultMsg(cal.messageList)
     }
 
-    fun getDamageIdByIndex(index : Int): Int{
+    fun getDamageIdByIndex(index: Int): Int{
         return this.damageArray[index]
     }
 
 
-    fun showResultMsg(messageList : ArrayList<String>){
+    fun showResultMsg(messageList: ArrayList<String>){
         //기존 삭제
 
         var innerView : LinearLayout = findViewById(R.id.innerView);
@@ -311,7 +338,12 @@ class MainActivity : AppCompatActivity() {
 
     fun reset(){
             // 다이얼로그
-            val builder = AlertDialog.Builder(ContextThemeWrapper(this@MainActivity, R.style.AlertDialog))
+            val builder = AlertDialog.Builder(
+                ContextThemeWrapper(
+                    this@MainActivity,
+                    R.style.AlertDialog
+                )
+            )
             builder.setTitle("확인")
             builder.setMessage("초기화 하시겠습니까?")
 
