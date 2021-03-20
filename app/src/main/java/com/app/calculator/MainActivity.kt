@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.text.InputFilter
 import android.text.InputFilter.LengthFilter
 import android.text.InputType
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
@@ -16,7 +18,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import com.google.android.gms.ads.AdRequest
@@ -29,11 +30,11 @@ class MainActivity : AppCompatActivity() {
     public var container: LinearLayout? = null
     public var applyConstraintSet = ConstraintSet()
     public val damageArray = arrayOf(
-        R.id.damage1,
-        R.id.damage2,
-        R.id.damage3,
-        R.id.damage4,
-        R.id.damage5
+            R.id.damage1,
+            R.id.damage2,
+            R.id.damage3,
+            R.id.damage4,
+            R.id.damage5
     )
     public var damageLength = 2
     lateinit var mAdView : AdView
@@ -108,12 +109,30 @@ class MainActivity : AppCompatActivity() {
         //화면 초기화 함수 호출.
        this.init()
     }
+    //메뉴
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    //메뉴 선택
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.menu1 -> {
+                this
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
     fun hideSoftKeyboard() {
         currentFocus?.let {
             val inputMethodManager = ContextCompat.getSystemService(
-                this,
-                InputMethodManager::class.java
+                    this,
+                    InputMethodManager::class.java
             )!!
             inputMethodManager.hideSoftInputFromWindow(it.windowToken, 0)
         }
@@ -301,10 +320,10 @@ class MainActivity : AppCompatActivity() {
     fun reset(){
             // 다이얼로그
             val builder = AlertDialog.Builder(
-                ContextThemeWrapper(
-                    this@MainActivity,
-                    R.style.AlertDialog
-                )
+                    ContextThemeWrapper(
+                            this@MainActivity,
+                            R.style.AlertDialog
+                    )
             )
             builder.setTitle("확인")
             builder.setMessage("초기화 하시겠습니까?")
