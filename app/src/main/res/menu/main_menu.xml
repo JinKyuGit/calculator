@@ -8,7 +8,7 @@
     </item>
     <item
         android:id="@+id/menu2"
-        android:title="준비중"
+        android:title="설문조사"
         app:showAsAction="never">
     </item>
 </menu>

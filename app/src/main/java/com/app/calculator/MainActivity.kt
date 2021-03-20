@@ -2,6 +2,7 @@ package com.app.calculator
 
 import android.content.Intent
 import android.content.res.Resources
+import android.net.Uri
 import android.os.Bundle
 import android.text.InputFilter
 import android.text.InputFilter.LengthFilter
@@ -120,8 +121,15 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
         return when (item.itemId) {
+            //이월계산기
             R.id.menu1 -> {
                 this
+                true
+            }
+            //설문조사.
+            R.id.menu2 -> {
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://forms.gle/urR4gSdw88b2ySdF7"))
+                startActivity(browserIntent)
                 true
             }
             else -> super.onOptionsItemSelected(item)
