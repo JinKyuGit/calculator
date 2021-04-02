@@ -21,9 +21,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
+import com.app.calculator.api.Api
+import com.app.calculator.data.Admin
+import com.app.calculator.data.ScheduleWrapper
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {
@@ -126,14 +132,49 @@ class MainActivity : AppCompatActivity() {
                 this
                 true
             }
-            //설문조사.
             R.id.menu2 -> {
+
+                true
+            }
+            //일정
+            R.id.menu3 -> {
+                val api = Api().getService()
+                var request = api.getSchedule()
+
+
+                var result = request.enqueue(object : Callback<ScheduleWrapper> {
+                    override fun onFailure(call: Call<ScheduleWrapper>, t: Throwable) {t.printStackTrace()}
+                    override fun onResponse(call: Call<ScheduleWrapper>, response: Response<ScheduleWrapper>) {
+
+                       var today = response?.body()?.result?.today
+                       var tomorrow = response?.body()?.result?.tomorrow
+
+                        alertSchedule(today, tomorrow)
+                    }
+                })
+
+
+                true
+            }
+            /*
+            //설문조사.
+            R.id.menu3 -> {
                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://forms.gle/urR4gSdw88b2ySdF7"))
                 startActivity(browserIntent)
                 true
-            }
+            } */
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    fun alertSchedule(today : String?, tomorrow : String?) {
+
+        val util = Util()
+
+        var str = "오늘 : "+today+"\n"+"내일 : "+tomorrow
+
+        util.alert(this, "일정", str)
+
     }
 
     fun hideSoftKeyboard() {
