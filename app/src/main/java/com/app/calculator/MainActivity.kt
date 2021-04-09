@@ -127,20 +127,17 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
         return when (item.itemId) {
-            //이월계산기
-            R.id.menu1 -> {
-                this
-                true
-            }
-            R.id.menu2 -> {
 
+            //아레나 조회 페이지로 이동
+            R.id.menu1 -> {
+                val intent = Intent(this, ArenaSearch::class.java)
+                startActivity(intent);
                 true
             }
             //일정
-            R.id.menu3 -> {
+            R.id.menu2 -> {
                 val api = Api().getService()
                 var request = api.getSchedule()
-
 
                 var result = request.enqueue(object : Callback<ScheduleWrapper> {
                     override fun onFailure(call: Call<ScheduleWrapper>, t: Throwable) {t.printStackTrace()}
@@ -171,7 +168,7 @@ class MainActivity : AppCompatActivity() {
 
         val util = Util()
 
-        var str = "오늘 : "+today+"\n"+"내일 : "+tomorrow
+        var str = today+"\n"+tomorrow
 
         util.alert(this, "일정", str)
 

@@ -8,6 +8,6 @@ import retrofit2.http.*
 
 interface RetrofitService {
 
-    @GET("/getSchedule")
+    @GET("/getScheduleNew")
     fun getSchedule(): Call<ScheduleWrapper>
 }

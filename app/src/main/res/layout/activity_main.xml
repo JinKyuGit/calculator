@@ -101,7 +101,12 @@
             android:text="칸 제거" />
 
     </LinearLayout>
-
+    <View
+        android:background="#000000"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="2dp">
+    </View>
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -116,6 +121,14 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <View
+        android:background="#000000"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="2dp">
+    </View>
 
     <LinearLayout
         android:layout_width="376dp"

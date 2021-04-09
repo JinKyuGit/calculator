@@ -3,16 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu1"
-        android:title="이월계산기"
+        android:title="아레나조회"
         app:showAsAction="never">
     </item>
     <item
         android:id="@+id/menu2"
-        android:title="아레나족보"
-        app:showAsAction="never">
-    </item>
-    <item
-        android:id="@+id/menu3"
         android:title="일정확인"
         app:showAsAction="never">
     </item>
