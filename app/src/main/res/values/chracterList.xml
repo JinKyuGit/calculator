@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 전열 -->
+    <item name="ch_4" type="id" />
+    <item name="ch_6" type="id" />
+    <item name="ch_7" type="id" />
+    <item name="ch_9" type="id" />
+    <item name="ch_10" type="id" />
+    <item name="ch_14" type="id" />
+    <item name="ch_16" type="id" />
+    <item name="ch_18" type="id" />
+    <item name="ch_19" type="id" />
+    <item name="ch_20" type="id" />
+    <item name="ch_27" type="id" />
+    <item name="ch_33" type="id" />
+    <item name="ch_34" type="id" />
+    <item name="ch_35" type="id" />
+    <item name="ch_50" type="id" />
+    <item name="ch_53" type="id" />
+    <item name="ch_54" type="id" />
+    <item name="ch_59" type="id" />
+    <item name="ch_62" type="id" />
+    <item name="ch_63" type="id" />
+    <item name="ch_72" type="id" />
+    <item name="ch_75" type="id" />
+    <item name="ch_76" type="id" />
+    <item name="ch_77" type="id" />
+    <item name="ch_82" type="id" />
+    <item name="ch_83" type="id" />
+    <item name="ch_89" type="id" />
+    <item name="ch_93" type="id" />
+    <item name="ch_94" type="id" />
+    <item name="ch_95" type="id" />
+    <item name="ch_96" type="id" />
+    <item name="ch_97" type="id" />
+    <item name="ch_98" type="id" />
+    <item name="ch_99" type="id" />
+    <item name="ch_100" type="id" />
+    <item name="ch_101" type="id" />
+    <item name="ch_102" type="id" />
+    <item name="ch_103" type="id" />
+    <item name="ch_105" type="id" />
+    <item name="ch_107" type="id" />
+    <item name="ch_108" type="id" />
+
+    <!-- 전열 끝 -->
+
+
+    <array name="ch_first_array">
+        <item>@id/ch_4</item>
+        <item>@id/ch_6</item>
+        <item>@id/ch_7</item>
+        <item>@id/ch_9</item>
+        <item>@id/ch_10</item>
+        <item>@id/ch_14</item>
+        <item>@id/ch_16</item>
+        <item>@id/ch_18</item>
+        <item>@id/ch_19</item>
+        <item>@id/ch_20</item>
+        <item>@id/ch_27</item>
+        <item>@id/ch_33</item>
+        <item>@id/ch_34</item>
+        <item>@id/ch_35</item>
+        <item>@id/ch_50</item>
+        <item>@id/ch_53</item>
+        <item>@id/ch_54</item>
+        <item>@id/ch_59</item>
+        <item>@id/ch_62</item>
+        <item>@id/ch_63</item>
+        <item>@id/ch_72</item>
+        <item>@id/ch_75</item>
+        <item>@id/ch_76</item>
+        <item>@id/ch_77</item>
+        <item>@id/ch_82</item>
+        <item>@id/ch_83</item>
+        <item>@id/ch_89</item>
+        <item>@id/ch_93</item>
+        <item>@id/ch_94</item>
+        <item>@id/ch_95</item>
+        <item>@id/ch_96</item>
+        <item>@id/ch_97</item>
+        <item>@id/ch_98</item>
+        <item>@id/ch_99</item>
+        <item>@id/ch_100</item>
+        <item>@id/ch_101</item>
+        <item>@id/ch_102</item>
+        <item>@id/ch_103</item>
+        <item>@id/ch_105</item>
+        <item>@id/ch_107</item>
+        <item>@id/ch_108</item>
+    </array>
+
+
+
+</resources>

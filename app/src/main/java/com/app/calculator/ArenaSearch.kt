@@ -8,9 +8,11 @@ import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.tabs.TabLayout
 
-class ArenaSearch : AppCompatActivity() {
+class ArenaSearch : AppCompatActivity(), EventListener {
 
     lateinit var mAdView2 : AdView
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +34,19 @@ class ArenaSearch : AppCompatActivity() {
 
         val tab = findViewById<TabLayout>(R.id.tab)
         tab.setupWithViewPager(pager)
+    }
 
 
+/*    interface ArenaSearchInterface{
+        fun click(id : Int) {
+
+            System.out.println("click 이벤트 : "+id)
+
+        }
+    }*/
+
+    override fun click(id: String) {
+        System.out.println("click 이벤트 : "+id)
+        
     }
 }

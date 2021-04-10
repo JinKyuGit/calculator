@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="first_row1" type="id" />
+    <item name="first_row2" type="id" />
+    <item name="first_row3" type="id" />
+    <item name="first_row4" type="id" />
+    <item name="first_row5" type="id" />
+    <item name="first_row6" type="id" />
+    <item name="first_row7" type="id" />
+    <item name="first_row8" type="id" />
+    <item name="first_row9" type="id" />
+    <item name="first_row10" type="id" />
+
+
+    <array name="first_row_array">
+        <item>@id/first_row1</item>
+        <item>@id/first_row2</item>
+        <item>@id/first_row3</item>
+        <item>@id/first_row4</item>
+        <item>@id/first_row5</item>
+        <item>@id/first_row6</item>
+        <item>@id/first_row7</item>
+        <item>@id/first_row8</item>
+        <item>@id/first_row9</item>
+        <item>@id/first_row10</item>
+    </array>
+
+
+
+
+
+
+
+
+
+</resources>

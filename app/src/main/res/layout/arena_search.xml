@@ -53,7 +53,8 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingLeft="16dp"
-            android:paddingRight="16dp">
+            android:paddingRight="16dp"
+            android:id="@+id/searchCart">
 
 
     </LinearLayout>
