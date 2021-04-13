@@ -3,6 +3,7 @@ package com.app.calculator
 import android.content.Context
 import android.content.res.Resources
 import android.os.Bundle
+import android.util.DisplayMetrics
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -68,8 +69,13 @@ class SecondFragment : Fragment() {
         activity?.let {
             val table2 : TableLayout = it.findViewById(R.id.table2)
 
+            val displaymetrics = DisplayMetrics()
+            activity!!.windowManager.defaultDisplay.getMetrics(displaymetrics)
+            val height = displaymetrics.heightPixels
+            val width = displaymetrics.widthPixels
 
-            val layoutParams = TableRow.LayoutParams(80.topx(), 80.topx())
+            val layoutParams = TableRow.LayoutParams(width/5, 80.topx())
+
             layoutParams.setMargins(5, 5, 5, 5)
             //전체 row의 수.
             var rowSize = this.ch_array.size / 4;

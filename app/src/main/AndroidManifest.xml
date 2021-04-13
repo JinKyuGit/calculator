@@ -20,7 +20,14 @@
 
         <activity android:name=".ArenaSearch">
             <intent-filter>
-                <action android:name="android.intent.action.Member" />
+                <action android:name="android.intent.action.ArenaSearch" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ArenaSearchResult">
+            <intent-filter>
+                <action android:name="android.intent.action.ArenaSearchResult" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
