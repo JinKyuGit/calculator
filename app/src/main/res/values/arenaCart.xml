@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="cart1" type="id" />
+    <item name="cart2" type="id" />
+    <item name="cart3" type="id" />
+    <item name="cart4" type="id" />
+    <item name="cart5" type="id" />
+
+
+</resources>
