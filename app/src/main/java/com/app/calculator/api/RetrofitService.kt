@@ -13,4 +13,8 @@ interface RetrofitService {
     //아레나 공덱 조회.
     @POST("/searchArena")
     fun searchArenaInfo(@Body param : ArenaInfo): Call<ArenaInfoWrapper>
+    
+    //아레나 등록
+    @POST("/registerArena")
+    fun registerArena(@Body param : ArenaInfo): Call<ArenaInfoWrapper2>
 }

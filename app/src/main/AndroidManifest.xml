@@ -32,6 +32,13 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ArenaRegister">
+            <intent-filter>
+                <action android:name="android.intent.action.ArenaRegister" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <!-- 광고 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

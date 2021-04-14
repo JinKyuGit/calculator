@@ -7,6 +7,7 @@ import android.util.DisplayMetrics
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.app.calculator.data.ArenaInfo
+import kotlinx.android.synthetic.*
 
 
 class ArenaSearchResult : AppCompatActivity() {
@@ -25,6 +26,16 @@ class ArenaSearchResult : AppCompatActivity() {
         this.setOfDeckList(ofList!!)
         
         //버튼 처리
+
+        val regBtn = findViewById<Button>(R.id.regBtn)
+
+        regBtn.setOnClickListener {
+
+            val intent = Intent(this, ArenaRegister::class.java)
+            intent.putExtra("df", df);
+            startActivity(intent);
+        }
+
         
         //뒤로가기
         val backBtn = findViewById<Button>(R.id.backBtn)
@@ -138,4 +149,13 @@ class ArenaSearchResult : AppCompatActivity() {
 
 
     }
+
+
+
+
+
+
+
+
+
 }

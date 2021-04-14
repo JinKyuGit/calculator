@@ -3,12 +3,16 @@ package com.app.calculator
 import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TableRow
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.ContextThemeWrapper
 import androidx.viewpager.widget.ViewPager
 import com.app.calculator.api.Api
 import com.app.calculator.data.ArenaInfo
@@ -57,19 +61,14 @@ class ArenaSearch : AppCompatActivity(), EventListener {
             this.search()
         }
 
+        val regBtn = findViewById<Button>(R.id.regBtn)
+
+        regBtn.setOnClickListener {
+            this.register()
+        }
+
 
     }
-
-
-
-/*    interface ArenaSearchInterface{
-        fun click(id : Int) {
-
-            System.out.println("click 이벤트 : "+id)
-
-        }
-    }*/
-
 
     //dp를 픽셀로 리턴.
     fun Int.topx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
@@ -126,6 +125,31 @@ class ArenaSearch : AppCompatActivity(), EventListener {
         return result
     }
 
+    //등록 화면으로 이동.
+    fun register(){
+
+        var util = Util()
+
+        if(this.cartList.size != 5){
+            util.alert(this, "알림", "캐릭터 5명을 선택해주세요.(방덱)")
+            return
+        }
+
+        var param = ArenaInfo()
+        param.df_1_character_id = cartList.get(0)
+        param.df_2_character_id = cartList.get(1)
+        param.df_3_character_id = cartList.get(2)
+        param.df_4_character_id = cartList.get(3)
+        param.df_5_character_id = cartList.get(4)
+
+        val intent = Intent(this, ArenaRegister::class.java)
+
+        intent.putExtra("df", param);
+        startActivity(intent);
+
+
+    }
+
     fun search(){
 
         var util = Util()
@@ -153,6 +177,7 @@ class ArenaSearch : AppCompatActivity(), EventListener {
 
                 if(null == resultList || resultList.size == 0){
                     //데이터가 없음 -> 등록화면으로 이동하게 함.
+                    registerDialog()
                 }else {
                     //화면 이동 함수 호출.
                     setResultView(param, resultList)
@@ -172,7 +197,103 @@ class ArenaSearch : AppCompatActivity(), EventListener {
         intent.putExtra("ofList", ofList);
 
         startActivity(intent);
+    }
 
+    fun registerDialog(){
+
+        // 다이얼로그
+        val builder = AlertDialog.Builder(
+            ContextThemeWrapper(
+                this@ArenaSearch,
+                R.style.AlertDialog
+            )
+        )
+        builder.setTitle("확인")
+        builder.setMessage("등록된 공덱이 없습니다. 등록하시겠습니까?")
+
+        builder.setPositiveButton(R.string.regYes) { dialog, id ->
+
+            var param = ArenaInfo()
+            param.df_1_character_id = cartList.get(0)
+            param.df_2_character_id = cartList.get(1)
+            param.df_3_character_id = cartList.get(2)
+            param.df_4_character_id = cartList.get(3)
+            param.df_5_character_id = cartList.get(4)
+
+            val intent = Intent(this, ArenaRegister::class.java)
+
+            intent.putExtra("df", param);
+            startActivity(intent);
+
+        }
+        builder.setNegativeButton(R.string.regNo) { dialog, id ->
+            dialog.dismiss()
+        }
+
+        val alert = builder.create()
+        alert.show()
+    }
+
+    //메뉴
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    //메뉴 선택
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+
+            //이월계산기로 이동
+            R.id.menu1 -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent);
+                true
+            }
+            R.id.menu2 -> {
+
+                true
+            }
+            //일정
+            R.id.menu3 -> {
+                val api = Api().getService()
+                var request = api.getSchedule()
+
+                var result = request.enqueue(object : Callback<ScheduleWrapper> {
+                    override fun onFailure(call: Call<ScheduleWrapper>, t: Throwable) {t.printStackTrace()}
+                    override fun onResponse(call: Call<ScheduleWrapper>, response: Response<ScheduleWrapper>) {
+
+                        var today = response?.body()?.result?.today
+                        var tomorrow = response?.body()?.result?.tomorrow
+
+                        alertSchedule(today, tomorrow)
+                    }
+                })
+
+
+                true
+            }
+            /*
+            //설문조사.
+            R.id.menu3 -> {
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://forms.gle/urR4gSdw88b2ySdF7"))
+                startActivity(browserIntent)
+                true
+            } */
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    fun alertSchedule(today : String?, tomorrow : String?) {
+
+        val util = Util()
+
+        var str = today+"\n"+tomorrow
+
+        util.alert(this, "일정", str)
 
     }
+
 }

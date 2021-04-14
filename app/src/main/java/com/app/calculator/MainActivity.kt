@@ -130,12 +130,15 @@ class MainActivity : AppCompatActivity() {
 
             //아레나 조회 페이지로 이동
             R.id.menu1 -> {
+                true
+            }
+            R.id.menu2 -> {
                 val intent = Intent(this, ArenaSearch::class.java)
-                startActivity(intent);
+                startActivity(intent)
                 true
             }
             //일정
-            R.id.menu2 -> {
+            R.id.menu3 -> {
                 val api = Api().getService()
                 var request = api.getSchedule()
 
