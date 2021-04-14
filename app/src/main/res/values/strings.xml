@@ -2,11 +2,11 @@
     <string name="app_name">이월계산기</string>
 
     <string name="ok_button">초기화</string>
-    <string name="cancel_button"><i>취소</i></string>
+    <string name="cancel_button">취소</string>
     <string name="regYes">등록하기</string>
-    <string name="regNo"><i>취소</i></string>
+    <string name="regNo">취소</string>
     <string name="regAdd">추가등록</string>
-    <string name="returnSearch"><i>취소</i></string>
+    <string name="returnSearch">취소</string>
 
     <!-- 광고 관련 -->
     <string name="admob_app_id">ca-app-pub-2671904183359974~8962254599</string>
