@@ -27,6 +27,9 @@ import com.app.calculator.data.ScheduleWrapper
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.UpdateAvailability
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,10 +52,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         //변수 생성 및 초기화.
         container = findViewById(R.id.container);
         //applyConstraintSet.clone(container);
+
 
         //화면클릭시 키보드 숨기기.
         this.setupUI(findViewById(R.id.container))
@@ -205,6 +208,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     
     //초기화 - 데미지 배열을 2개로 고정해놓는다.
     fun init(){

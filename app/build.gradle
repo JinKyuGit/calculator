@@ -14,8 +14,8 @@ android {
         applicationId "com.app.priconeCalculator"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 8
-        versionName "1.8"
+        versionCode 15
+        versionName "2.5"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -57,4 +57,7 @@ dependencies {
     implementation group: 'com.squareup.retrofit2', name: 'converter-gson', version: '2.9.0'
     implementation group: 'com.squareup.retrofit2', name: 'adapter-rxjava2', version: '2.9.0'
 
+    //update
+    implementation 'com.google.android.play:core:1.6.1'
+    implementation 'com.google.android.material:material:1.2.1'
 }

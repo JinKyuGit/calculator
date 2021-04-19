@@ -131,7 +131,7 @@
     </View>
 
     <LinearLayout
-        android:layout_width="376dp"
+        android:layout_width="435dp"
         android:layout_height="74dp"
         android:gravity="center"
         android:orientation="horizontal"
@@ -159,7 +159,7 @@
             android:layout_marginBottom="4dp"
             android:gravity="center"
             android:text="초기화"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
     </LinearLayout>
 
